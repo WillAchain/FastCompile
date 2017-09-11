@@ -1,0 +1,53 @@
+gcc main.cpp -lsqlapi -lstdc++ -Wl,--no-as-needed -ldl
+
+cmake -D ECC_IMPL=secp256k1 .
+
+
+LDFLAGS="-lstdc++ -Wl -no-as-needed -ldl"
+
+apt-get install libncurses5-dev
+sudo apt-get install libreadline6 libreadline6-dev
+
+
+LDLIBS="-lstdc++ -Wl -no-as-needed -ldl" LDFLAGS="-lstdc++ -Wl -no-as-needed -ldl"
+
+export SECP256K1_INCLUDE_PATH=/usr/local/include
+export SECP256K1_LIB_PATH=your_path_here/lib
+
+apt-get install libssl-dev
+apt-get install libbz2-dev
+
+type  secp256k1_context_t
+
+
+./configure --with-bignum=no
+
+install libssh2
+
+
+===leveldb
+git clone https://github.com/google/leveldb.git
+cd leveldb/
+make
+sudo scp out-static/lib* out-shared/lib* /usr/local/lib/
+cd include/
+sudo scp -r leveldb /usr/local/include/
+sudo ldconfig
+
+==must install ntp
+
+sudo apt-get install ntp
+sudo apt-get install ntpdate
+sudo service ntp stop
+sudo ntpdate -s time.nist.gov
+sudo service ntp start
+
+
+sudo apt-get update
+sudo apt-get install cmake git libreadline-dev uuid-dev g++ libdb++-dev libdb-dev zip libssl-dev openssl build-essential python-dev autotools-dev libicu-dev libbz2-dev libboost-dev libboost-all-dev
+git clone https://github.com/BitShares/bitshares.git
+cd bitshares
+git submodule update --init --recursive
+cmake .
+export LC_ALL="en_US.UTF-8"
+make
